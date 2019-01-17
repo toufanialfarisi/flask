@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <main class="hero-section">
+        <div class="container" ></div>
+        <div class="section-tabs" ></div>
+        <div class="section-map">
+            <div class="nav">
+                <form action="/home" method="POST">
+                {{ form.hidden_tag() }}
+
+                <div class="form-group">
+                    {% if form.address.errors %}
+                        {% for error in form.address.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {{ form.address(placeholder="Explore nearby") }}
+                </div>
+                {{ form.submit(class="btn-primary") }}
+                </form>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
